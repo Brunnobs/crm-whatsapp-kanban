@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📊 CRM WhatsApp Kanban
 
-## Getting Started
+Projeto desenvolvido com foco em:
 
-First, run the development server:
+- Organização de clientes via Kanban
+- Integração com WhatsApp
+- API REST (Node.js + Next.js)
+- Banco de dados MongoDB
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Funcionalidades
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Criar clientes
+- Listar clientes
+- Atualizar status (Kanban)
+- Drag and Drop
+- Integração com WhatsApp
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🧪 Testes (QA)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Testes realizados via Postman:
 
-## Learn More
+- POST /api/clientes
+- GET /api/clientes
+- PATCH /api/clientes/:id
 
-To learn more about Next.js, take a look at the following resources:
+Validações:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Status code
+- Estrutura JSON
+- Persistência no banco
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠 Tecnologias
 
-## Deploy on Vercel
+- Next.js
+- MongoDB
+- Mongoose
+- DnD Kit
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📌 Objetivo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Projeto desenvolvido para prática de QA e automação de testes, além de uso real em gestão de pedidos.

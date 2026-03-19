@@ -18,7 +18,7 @@ export default function KanbanBoard() {
     carregarClientes();
   }, []);
 
-  // 🔥 Aqui acontece a mágica
+  // 🔥 Drag and Drop
   async function handleDragEnd(event) {
 
     const { active, over } = event;
@@ -28,7 +28,6 @@ export default function KanbanBoard() {
     const clienteId = active.id;
     const novoStatus = over.id;
 
-    // Atualiza no banco
     await fetch(`/api/clientes/${clienteId}`, {
       method: "PATCH",
       headers: {
@@ -39,15 +38,71 @@ export default function KanbanBoard() {
       })
     });
 
-    // Atualiza na tela
+    carregarClientes();
+  }
+
+  // 🔥 Criar cliente (CORRIGIDO - fora do return)
+  async function criarCliente() {
+
+    const nome = prompt("Nome do cliente:");
+    const telefone = prompt("Telefone:");
+
+    if (!nome || !telefone) return;
+
+    await fetch("/api/clientes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        nome,
+        telefone
+      })
+    });
+
     carregarClientes();
   }
 
   return (
 
-    <DndContext onDragEnd={handleDragEnd}>
+  <DndContext onDragEnd={handleDragEnd}>
 
-      <div style={{ display: "flex", gap: "20px", padding: "20px" }}>
+    <div style={{
+      background: "#111b21", // fundo escuro estilo WhatsApp
+      minHeight: "100vh",
+      padding: "20px"
+    }}>
+
+    <h1 style={{
+      color: "#e9edef",
+      fontSize: "24px",
+      fontWeight: "bold",
+      marginBottom: "20px"
+    }}>
+      📊 CRM WhatsApp
+    </h1>
+
+      <button
+        onClick={criarCliente}
+        style={{
+          marginBottom: "20px",
+          padding: "10px 16px",
+          background: "#25D366",
+          color: "#111",
+          border: "none",
+          borderRadius: "8px",
+          fontWeight: "bold",
+          cursor: "pointer"
+      }}
+    >
+       ➕ Novo Cliente
+    </button>
+
+      <div style={{
+        display: "flex",
+        gap: "16px",
+        overflowX: "auto"
+      }}>
 
         <Column id="conversa" titulo="Conversas" clientes={clientes} />
         <Column id="negociacao" titulo="Negociação" clientes={clientes} />
@@ -56,8 +111,10 @@ export default function KanbanBoard() {
 
       </div>
 
-    </DndContext>
+    </div>
 
-  );
+  </DndContext>
+
+);
 
 }

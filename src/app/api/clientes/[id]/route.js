@@ -12,9 +12,18 @@ export async function PATCH(req, context) {
 
     const cliente = await Cliente.findByIdAndUpdate(
       params.id,
-      { status: body.status },
+      { 
+        status: body.status,
+        valorTotal: body.valorTotal,
+        sinalPago: body.sinalPago 
+      },
       { returnDocument: "after" }
     );
+    const updateData = {};
+
+      if (body.status) updateData.status = body.status;
+      if (body.valorTotal !== undefined) updateData.valorTotal = body.valorTotal;
+      if (body.sinalPago !== undefined) updateData.sinalPago = body.sinalPago;
 
     return Response.json(cliente);
 

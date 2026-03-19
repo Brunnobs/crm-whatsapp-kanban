@@ -11,6 +11,16 @@ const ClienteSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  
+  valorTotal: {
+    type: Number,
+    default: 0
+  },
+
+  sinalPago: {
+    type: Number,
+    default: 0
+  },
 
   status: {
     type: String,

@@ -16,14 +16,21 @@ export default function Column({ titulo, id, clientes }) {
     <div
       ref={setNodeRef}
       style={{
-        width: "250px",
-        background: "#f4f4f4",
-        padding: "10px",
-        borderRadius: "8px"
+        minWidth: "280px",
+        background: "#202c33", // cor WhatsApp
+        borderRadius: "10px",
+        padding: "10px"
       }}
-    >
+>
 
-      <h3>{titulo}</h3>
+  <h3 style={{
+    marginBottom: "10px",
+    fontSize: "14px",
+    fontWeight: "bold",
+    color: "#aebac1" // cinza claro
+  }}>
+    {titulo}
+  </h3>
 
       {filtrados.map(cliente => (
         <Card key={cliente._id} cliente={cliente} />
